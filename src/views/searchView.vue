@@ -15,8 +15,12 @@
     />
 
     <!-- 表格展示模块 -->
-    <el-table :data="paginatedJournals" style="width: 100%; margin-top: 20px">
-      <el-table-column label="期刊名称" align="center" width="300px">
+    <el-table
+      :data="paginatedJournals"
+      style="width: 100%; margin-top: 20px"
+      :default-sort="{ prop: 'date', order: 'descending' }"
+    >
+      <el-table-column label="期刊名称" align="center" width="250px">
         <template #default="{ row }">
           <div>
             {{ row.journalTitle }}
@@ -24,20 +28,34 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column prop="journalDb" label="数据库" align="center" />
-      <el-table-column prop="impactFactor" label="影响因子" align="center" width="150px" />
-      <el-table-column prop="quote_factor" label="引文指标" align="center" />
+      <el-table-column prop="journalDb" label="数据库" sortable align="center" />
+      <el-table-column prop="impactFactor" label="影响因子" sortable align="center" width="120px" />
+      <el-table-column prop="quote_factor" label="引文指标" sortable align="center" width="120px" />
       <el-table-column prop="jcrZone" label="JCR分区" align="center" />
       <el-table-column prop="subZone" label="国内分区" align="center" />
-      <el-table-column prop="publicationPeriod" label="年发表文献" align="center" />
-      <el-table-column prop="annualPublication" label="总被引频次" align="center" />
+      <el-table-column
+        prop="publicationPeriod"
+        label="年发表文献"
+        sortable
+        align="center"
+        width="120px"
+      />
+      <el-table-column
+        prop="annualPublication"
+        label="总被引频次"
+        sortable
+        align="center"
+        width="120px"
+      />
       <el-table-column
         prop="totalReviewRatio"
         label="综合占比"
         align="center"
+        sortable
         :formatter="formatPercentage"
+        width="120px"
       />
-      <el-table-column prop="open_ratio" label="是否开源/开源占比" align="center" />
+      <el-table-column prop="open_ratio" label="是否开源/开源占比" sortable align="center" />
       <el-table-column prop="isDomestic" label="是否国产" align="center" />
     </el-table>
 
